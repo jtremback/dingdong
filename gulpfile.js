@@ -15,28 +15,28 @@ gulp.task('styles', function () {
     .pipe(gulpLess({ paths: ['src/styles'] }))
     .pipe(gulpAutoprefixer('last 2 versions'))
     .pipe(gulpMinifyCss())
-    .pipe(gulp.dest('dist/styles'))
+    .pipe(gulp.dest('styles'))
     .pipe(gulpNotify({ message: 'styles task complete' }));
 });
 
 gulp.task('scripts', function () {
-  return gulp.src(['src/scripts/script.js'])
+  return gulp.src(['src/scripts/**/**'])
     .pipe(gulpInclude('// = '))
-    .pipe(gulpUglify())
-    .pipe(gulp.dest('dist/scripts'))
+    // .pipe(gulpUglify())
+    .pipe(gulp.dest('scripts'))
     .pipe(gulpNotify({ message: 'scripts task complete' }));
 });
 
 gulp.task('html', function () {
   return gulp.src(['src/index.jade'])
     .pipe(gulpJade())
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(''))
     .pipe(gulpNotify({ message: 'html task complete' }));
 });
 
 // WATCH
 gulp.task('watch', function () {
-  gulp.watch('src/scripts/**', ['scripts']);
+  gulp.watch('src/scripts/**/**', ['scripts']);
   gulp.watch('src/styles/**', ['styles']);
   gulp.watch('src/*.jade', ['html']);
 });
