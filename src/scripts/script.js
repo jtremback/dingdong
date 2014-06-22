@@ -143,9 +143,9 @@ if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and 
 // if the page is shown, play the video
 function handleVisibilityChange() {
   if (document[hidden]) {
-    webrtc.pauseVideo();
+    webrtc.pause();
   } else {
-    webrtc.resumeVideo();
+    webrtc.resume();
   }
 }
 
